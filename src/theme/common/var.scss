@@ -1,0 +1,160 @@
+@use "sass:map";
+// 标准色
+$color-white: #ffffff;
+$color-red: #e54d42;
+$color-orange: #f37b1d;
+$color-yellow: #fbbd08;
+$color-olive: #8dc63f;
+$color-green: #39b54a;
+$color-cyan: #1cbbb4;
+$color-blue: #0081ff;
+$color-purple: #6739b6;
+$color-mauve: #9c26b0;
+$color-pink: #e03997;
+$color-brown: #a5673f;
+$color-grey: #8799a3;
+$color-black: #333333;
+$color-darkGray: #666666;
+$color-gray: #aaaaaa;
+$color-ghostWhite: #f1f1f1;
+$color-white: #ffffff;
+// 浅色
+$color-redLight: #fadbd9;
+$color-orangeLight: #fde6d2;
+$color-yellowLight: #fef2ce;
+$color-oliveLight: #e8f4d9;
+$color-greenLight: #d7f0db;
+$color-cyanLight: #d2f1f0;
+$color-blueLight: #cce6ff;
+$color-purpleLight: #e1d7f0;
+$color-mauveLight: #ebd4ef;
+$color-pinkLight: #f9d7ea;
+$color-brownLight: #ede1d9;
+$color-greyLight: #e7ebed;
+//渐变色
+$color-gradualRed: linear-gradient(45deg, #f43f3b, #ec008c);
+$color-gradualOrange: linear-gradient(45deg, #ff9700, #ed1c24);
+$color-gradualGreen: linear-gradient(45deg, #39b54a, #8dc63f);
+$color-gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
+$color-gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
+$color-gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+//阴影
+$color-ShadowSize: 6 rpx 6 rpx 8 rpx;
+$color-redShadow: rgba(204, 69, 59, 0.2);
+$color-orangeShadow: rgba(217, 109, 26, 0.2);
+$color-yellowShadow: rgba(224, 170, 7, 0.2);
+$color-oliveShadow: rgba(124, 173, 55, 0.2);
+$color-greenShadow: rgba(48, 156, 63, 0.2);
+$color-cyanShadow: rgba(28, 187, 180, 0.2);
+$color-blueShadow: rgba(0, 102, 204, 0.2);
+$color-purpleShadow: rgba(88, 48, 156, 0.2);
+$color-mauveShadow: rgba(133, 33, 150, 0.2);
+$color-pinkShadow: rgba(199, 50, 134, 0.2);
+$color-brownShadow: rgba(140, 88, 53, 0.2);
+$color-greyShadow: rgba(114, 130, 138, 0.2);
+$color-grayShadow: rgba(114, 130, 138, 0.2);
+$color-blackShadow: rgba(26, 26, 26, 0.2);
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    "primary": #141414,
+    "regular": #606266,
+    "secondary": #909399,
+    "placeholder": #c0c4cc,
+  ),
+  $text-color
+);
+$border-color: () !default;
+$border-color: map.merge(
+  (
+    "base": #dcdfe6,
+    "light": #e4e7ed,
+    "lighter": #ebeef5,
+    "extra-light": #f2f6fc,
+  ),
+  $border-color
+);
+$bg-color: #f5f7fa !default;
+$border-width-base: 1px !default;
+$border-style-base: solid !default;
+$border-color-hover: map.get($text-color, "placeholder") !default;
+$border-base: $border-width-base $border-style-base
+  map.get($border-color, "base") !default;
+$border-radius: () !default;
+$border-radius: map.merge(
+  (
+    "rect": 0,
+    "base": 8px,
+    "small": 2px,
+    "round": 10px,
+    "circle": 100%,
+  ),
+  $border-radius
+);
+
+// Box-shadow
+$box-shadow: () !default;
+$box-shadow: map.merge(
+  (
+    "base": (
+      0 2px 4px rgba(0, 0, 0, 0.12),
+      0 0 6px rgba(0, 0, 0, 0.04),
+    ),
+    "light": 0 2px 12px 0 rgba(0, 0, 0, 0.1),
+  ),
+  $box-shadow
+);
+
+// Typography
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    "extra-large": 20px,
+    "large": 18px,
+    "normal": 14px,
+    "small": 13px,
+    "mini": 3px,
+  ),
+  $font-size
+);
+
+// Disable default
+$disabled: () !default;
+$disabled: map.merge(
+  (
+    "bg-color": $bg-color,
+    "text-color": map.get($text-color, "placeholder"),
+    "border-color": map.get($text-color, "light"),
+  ),
+  $disabled
+);
+$common-component-height: () !default;
+$common-component-height: map.merge(
+  (
+    "large": 60px,
+    "normal": 42px,
+    "small": 30px,
+    "mini":18px
+  ),
+  $common-component-height
+);
+$positions:top,right,bottom,left;
+@mixin disableRound($position) {
+  @if $position == top{
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0!important;
+  }
+  @else if $position == bottom {
+      border-bottom-left-radius: 0!important;
+      border-bottom-right-radius: 0!important;
+  }
+  @else if $position == left {
+      border-top-left-radius: 0!important;
+      border-bottom-left-radius: 0!important;
+  }
+  @else if $position == right{
+      border-top-right-radius: 0!important;
+      border-bottom-right-radius: 0!important;
+  }
+}
+

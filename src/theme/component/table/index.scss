@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "sass:color";
+@use "./var" as *;
+@use "../../common/config" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "../../base" as *;
+
+
+.#{$namespace}-table {
+  display: flex;
+  flex-direction: column;
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 10px;
+    transition: color height;
+    background-color:color.mix(#ffffff,map.get($colors,"primary","base"),40%);
+    &:hover {
+      background-color:color.mix(#ffffff,map.get($colors,"primary","base"),20%);
+    }
+    &:active {
+      background-color:color.mix(#ffffff,map.get($colors,"primary","base"),10%);
+    }
+  }
+  &::-webkit-scrollbar { 
+    /* 隐藏默认的滚动条 */
+    -webkit-appearance: none;
+  }
+  /* 这里不需要用到这个 */
+  &::-webkit-scrollbar:horizontal{
+    height: 8px;
+  }
+  >.#{$namespace}-table-row {
+    display: flex;
+    flex-direction: row;
+    color: map.get($text-color,"regular");
+    &:first-child {
+      color:map.get($colors,"primary","base");
+      font-weight: bold;
+    }
+    >.#{$namespace}-table-cell {
+      text-align: center;
+      border-bottom:$border-base;
+      padding: 10px;
+      word-break:break-all;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use "../../default.scss" as *;
+@use "../../common/config.scss" as *;
+@use "../../common/var.scss" as *;
+
+@use "sass:map";
+@use "sass:color";
+$sizes: large, normal, small, mini;
+@mixin base {
+  display: inline-block;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  margin-top: 0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  svg {
+    // animation: i-icon-spin 1s infinite linear;
+  }
+}
+@each $type in $types {
+  .icon-#{$type} {
+    @include base;
+    color: map.get($colors, $type, "base");
+  }
+  .icon-#{$type}-reactive {
+    @include base;
+    color: map.get($colors, $type, "base");
+    .i-icon-rtl {
+      transform: scaleX(-1);
+    }
+    &:hover {
+      filter: brightness(80%);
+      cursor: pointer;
+    }
+    &:active {
+      filter: brightness(60%);
+    }
+  }
+  .icon-#{$type}-pain-reactive {
+    color: map.get($colors, "info", "base");
+    @include base;
+    .i-icon-rtl {
+      transform: scaleX(-1);
+    }
+    &:hover {
+      color: color.mix(#ffffff, map.get($colors, $type, "base"), 10%);
+      cursor: pointer;
+    }
+    &:active {
+      color: color.mix(#000000, map.get($colors, $type, "base"), 10%);
+      cursor: pointer;
+    }
+  }
+  .icon-custom {
+    color: inherit;
+  }
+}
+@each $size in $sizes {
+  .sa-inner-icon-#{$size} {
+    font-size: map.get($font-size, $size) + 5px;
+    line-height: map.get($font-size,$size) + 5px;
+  }
+}
+
+@keyframes i-icon-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes i-icon-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,64 @@
+@use "../../base" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "sass:map";
+
+$input: () !default;
+$input: map.merge(
+  (
+    "text-color": map.get($text-color, "regular"),
+    "border": $border-base,
+    "border-width": $border-width-base,
+    "border-color": map.get($border-color, "base"),
+    "border-radius": map.get($border-radius, "base"),
+    "bg-color": $color-white,
+    "icon-color": map.get($text-color, "placeholder"),
+    "placeholder-color": map.get($text-color, "placeholder"),
+    "hover-border": map.get($border-color, "hover"),
+    "clear-hover-color": map.get($text-color, "secondary"),
+    "focus-border": map.get($colors, "primary", "base"),
+  ),
+  $input
+);
+
+$input-disabled: () !default;
+$input-disabled: map.merge(
+  (
+    "fill": map.get($disabled, "bg-color"),
+    "border": map.get($disabled, "border-color"),
+    "text-color": map.get($disabled, "text-color"),
+    "placeholder-color": map.get($text-color, "placeholder"),
+  ),
+  $input-disabled
+);
+
+$input-font-size: () !default;
+$input-font-size: map.merge(
+  (
+    "large": 14px,
+    "normal": 14px,
+    "small": 12px,
+  ),
+  $input-font-size
+);
+
+$input-height: () !default;
+$input-height: map.merge($common-component-height, $input-height);
+$input-width: () !default;
+$input-width: map.merge(
+  (
+    "large": 180px,
+    "normal": 150px,
+    "small": 120px,
+  ),
+  $input-width
+);
+$label-width: () !default;
+$label-width: map.merge(
+  (
+    "large": 100px,
+    "normal": 80px,
+    "small": 60px,
+  ),
+  $label-width
+);

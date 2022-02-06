@@ -1,0 +1,53 @@
+@use "sass:map";
+@use "sass:color";
+@use "./var" as *;
+@use "../../common/config" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "../../base" as *;
+
+$sizes: small, normal, large;
+
+@each $size in $sizes {
+  .#{$namespace}-input-border-#{$size} {
+    text-align: left;
+    border: $border-width-base
+      $border-style-base
+      map.get($border-color, "base");
+    height: map.get($input-height, $size) - map.get($input, "border-width") * 2;
+    width: fit-content;
+    > .#{$namespace}-input-inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: map.get($input-height, $size) -
+        map.get($input, "border-width") *
+        2;
+      padding: 0 5px;
+      font-size: map.get($input-font-size, $size);
+      .#{$namespace}-input-inner-label {
+        color: map.get($colors, "info", "base");
+        width: fit-content;
+      }
+    }
+    > .#{$namespace}-input-error {
+      color: map.get($colors, "error", "base");
+      font-size: 5px;
+    }
+  }
+}
+.#{$namespace}-pure-input {
+  padding: 0;
+  width: map.get($input-width, "normal");
+  border: 0;
+  outline: none;
+  color: map.get($input, "text-color");
+}
+.#{$namespace}-input-border-rounded {
+  border-radius: map.get($border-radius, "base");
+}
+
+.hidden {
+  visibility: hidden;
+}

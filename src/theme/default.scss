@@ -1,0 +1,62 @@
+@use "sass:map";
+@use "sass:color";
+@use "sass:math";
+@use "base.scss";
+@use "./common/var.scss" as *;
+@use "./common/config.scss" as *;
+
+$types: primary, success, warning, danger, error, info;
+$colors: () !default;
+// 基础主题颜色
+$colors: map.merge(
+  (
+    "white": #ffffff,
+    "black": #000000,
+    "primary": (
+      "base": #0e885f,
+    ),
+    "success": (
+      "base": #67c23a,
+    ),
+    "warning": (
+      "base": #e6a23c,
+    ),
+    "danger": (
+      "base": #ff0000,
+    ),
+    "error": (
+      "base": #f56c6c,
+    ),
+    "info": (
+      "base": #909399,
+    ),
+  ),
+  $colors
+);
+
+// 将  特定类型 的颜色 的亮度 提高 number * 10%
+@mixin set-color-type-light($type, $number) {
+  $colors: map.merge(
+    (
+      $type: (
+        "light-#{$number}":
+          color.mix(
+            #ffffff,
+            map.get($colors, $type, "base"),
+            math.percentage($number * 0.1)
+          ),
+      ),
+    ),
+    $colors
+  ) !global;
+}
+@each $type in $types {
+  .text-#{$type} {
+    color: map.get($colors, $type, "base");
+  }
+}
+@each $position in $positions {
+  .#{$namespace}-disable-round-#{$position} {
+    @include disableRound($position);
+  }
+}

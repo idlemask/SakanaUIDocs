@@ -1,0 +1,63 @@
+@use "../../default.scss" as *;
+@use "../../common/config.scss" as *;
+@use "../../common/var.scss" as *;
+@use "./var.scss" as *;
+@use "sass:map";
+@use "sass:color";
+
+@each $type in $types {
+  .#{$namespace}-button-#{$type} {
+    @include button-color($type);
+  }
+  .#{$namespace}-button-#{$type}-pain {
+    @include button-color-pain($type);
+  }
+}
+.#{$namespace}-button-default {
+  border: 0.5px solid map.get($border-color, "base");
+  &:hover,
+  &:focus {
+    background-color: color.mix(
+      #ffffff,
+      map.get($colors, "primary", "base"),
+      60%
+    );
+    color: map.get($colors, "primary", "base");
+    border: 0.5px solid
+      color.mix(#ffffff, map.get($colors, "primary", "base"), 40%);
+  }
+  &:active {
+    color: color.mix(#000, map.get($colors, "primary", "base"), 20%);
+    border: 0.5px solid
+      color.mix(#000, map.get($colors, "primary", "base"), 20%);
+  }
+}
+.#{$namespace}-button-default-pain {
+  border: 0.5px solid map.get($border-color, "base");
+  &:hover,
+  &:focus {
+    color: map.get($colors, "primary", "base");
+    border: 0.5px solid map.get($colors, "primary", "base");
+    outline: none;
+  }
+  &:active {
+    color: color.mix(#000, map.get($colors, "primary", "base"), 20%);
+    border: 0.5px solid
+      color.mix(#000, map.get($colors, "primary", "base"), 20%);
+  }
+}
+
+
+@each $size in $btn-sizes {
+  @each $shape in $shapes {
+    .#{$namespace}-button-#{$size}-#{$shape} {
+      @include button-size-shape($size,$shape);
+      .sa-button-inner{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: map.get($font-size,$size);
+    }
+    }
+  }
+}

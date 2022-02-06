@@ -1,0 +1,74 @@
+@use '../../default.scss' as *;
+@use '../../common/config.scss' as *;
+@use '../../common/var.scss' as *;
+@use 'sass:map';
+@use 'sass:color';
+
+$btn-sizes: mini, small, normal, large;
+$shapes:rect, round, circle;
+$button-width:();
+$button-width:map.merge(
+    (
+    "large": 90px,
+    "normal": 60px,
+    "small": 50px,
+    "mini":30px
+  ),$button-width
+);
+
+@mixin button-color($type) {
+    border:0.5px solid map.get($colors,$type,"base");
+    background-color: map.get($colors,$type,"base");
+    color:white;
+    &:hover {
+        filter:brightness(90%);
+    }
+    &:active {
+        filter:brightness(80%);
+    }
+}
+@mixin button-color-pain($type) {
+    color:map.get($colors,$type,"base");
+    border:0.5px solid color.mix(#ffffff, map.get($colors,$type,"base"), 40%);
+    background-color: $bg-color;
+    &:hover{
+        color: white;
+        background-color: map.get($colors,$type,"base");
+        border-color: map.get($colors,$type,"base");
+    }
+    &:active{
+        color: white;
+        background-color: map.get($colors,$type,"base");
+        border-color: map.get($colors,$type,"base");
+        filter:brightness(90%);
+    }
+}
+@mixin button-shape($shape) {
+    border-radius: map.get($border-radius,$shape);
+}
+@mixin button-size-shape($size,$shape) {
+    @include button-common();
+    @include button-shape($shape);
+    font-size: map.get($font-size,$size);
+    height: map.get($common-component-height,$size);
+    @if $shape != circle {
+        min-width: map.get($button-width,$size);
+    }
+    @else {
+        width: map.get($common-component-height,$size);
+    }
+    @if $size == mini {
+        padding: 1px;
+    }
+    @else {
+        padding: 5px;
+    }
+}
+@mixin button-common {
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
