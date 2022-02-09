@@ -13,17 +13,13 @@
       :style="{ 'flex-direction': innerBoxFlexDirection }"
     >
       <slot class="sa-button-content"></slot>
-      <IconPark
-        :class="'sa-inner-icon-' + size"
-        v-if="icon != null"
-        :type="icon"
-      />
+      <icon-park v-if="icon != null" :type="icon" color="inherit" />
     </div>
   </button>
 </template>
 <script lang="ts">
 import { defineComponent, toRefs, computed } from "vue";
-import { IconPark } from "@icon-park/vue-next/es/all";
+import IconPark from "@/components/icon/iconPark.vue";
 import { buttonEmits, buttonProps } from "./button";
 export default defineComponent({
   props: buttonProps,

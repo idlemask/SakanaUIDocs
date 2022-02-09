@@ -7,7 +7,9 @@ export const iconProps = {
   color: {
     type: String,
     validator(val: string): boolean {
-      return color_type.includes(val) || isColor(val);
+      return (
+        color_type.includes(val) || isColor(val) || ["inherit"].includes(val)
+      );
     },
     default: "info",
   },
@@ -26,8 +28,8 @@ export const iconProps = {
     },
     default: "inherit",
   },
-  filled:{
-    type:Boolean,
-    default:false,
+  filled: {
+    type: Boolean,
+    default: false,
   },
 };

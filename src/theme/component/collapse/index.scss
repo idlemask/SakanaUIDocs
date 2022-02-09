@@ -1,0 +1,14 @@
+@use "../../default.scss" as *;
+@use "../../common/config.scss" as *;
+@use "../../common/var.scss" as *;
+@use "sass:map";
+@use "sass:color";
+.#{$namespace}-collapse {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  .#{$namespace}-collapse-content {
+    background-color: $bg-color;
+    transition: height 1s, width 1s;
+  }
+}

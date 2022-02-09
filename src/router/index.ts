@@ -33,6 +33,16 @@ const routes: Array<RouteRecordRaw> = [
     name: "Button",
     component: () => import("../views/components/button.vue"),
   },
+  {
+    path: "/tooltip",
+    name: "Tooltip",
+    component: () => import("../views/components/tooltip.vue"),
+  },
+  {
+    path: "/collapse",
+    name: "Collapse",
+    component: () => import("../views/components/collapse.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "sass:color";
+@use "./var" as *;
+@use "../../common/config" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "../../base" as *;
+$sizes: large, normal, small;
+.#{$namespace}-tooltip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: fit-content;
+  .#{$namespace}-tooltip-container {
+    width: max-content;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 98;
+    -webkit-filter: drop-shadow(0px 2px 6px color.mix(rgb(131, 131, 131), map.get($colors, "primary", "base"), 80%));
+	        filter: drop-shadow(0px 2px 6px color.mix(rgb(131, 131, 131), map.get($colors, "primary", "base"), 80%));
+    .#{$namespace}-tooltip-content {
+        width: max-content;
+        position: relative;
+        border-radius: map.get($border-radius, "base");
+        background-color: $bg-color;
+        padding: 5px;
+      }
+  }
+}
+.tooltip-enter{
+    animation: enter 0.5s;
+}
+@keyframes enter {
+    0% {opacity: 0 }
+    70%{opacity: 0 }
+    100%{opacity: 1;}
+}
+.tooltip-out{
+    animation: out 0.5s;
+}
+@keyframes out {
+    0% {opacity: 1 }
+    50%{opacity: 0.1 }
+    100%{opacity: 0;}
+}
+@each $position in $positions {
+  .#{$namespace}-tooltip-arrow-#{$position} {
+    @include arrow($position);
+    
+    z-index: 99;
+  }
+}

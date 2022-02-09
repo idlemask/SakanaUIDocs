@@ -9,45 +9,65 @@
         通过 type 改变按钮的主题色，通过 pain 属性改变样式，通过size改变大小
       </p>
       <p>案例:</p>
-      <p>type：</p>
-      <div class="row-container">
-        <sa-button type="default">default</sa-button>
-        <sa-button type="primary">primary</sa-button>
-        <sa-button type="success">success</sa-button>
-        <sa-button type="warning">warning</sa-button>
-        <sa-button type="danger">danger</sa-button>
-        <sa-button type="error">error</sa-button>
+      <div class="demo">
+        <p>type：</p>
+        <div class="row-container">
+          <sa-button type="default">default</sa-button>
+          <sa-button type="primary">primary</sa-button>
+          <sa-button type="success">success</sa-button>
+          <sa-button type="warning">warning</sa-button>
+          <sa-button type="danger">danger</sa-button>
+          <sa-button type="error">error</sa-button>
+          <sa-button type="info">info</sa-button>
+        </div>
+        <p>pain:</p>
+        <div class="row-container">
+          <sa-button type="default" pain>default</sa-button>
+          <sa-button type="primary" pain>primary</sa-button>
+          <sa-button type="success" pain>success</sa-button>
+          <sa-button type="warning" pain>warning</sa-button>
+          <sa-button type="danger" pain>danger</sa-button>
+          <sa-button type="error" pain>error</sa-button>
+          <sa-button type="info" pain>info</sa-button>
+        </div>
+        <p>shape:</p>
+        <div class="row-container">
+          <sa-button shape="rect" type="default" pain>rect</sa-button>
+          <sa-button shape="round" type="primary" pain>round</sa-button>
+          <sa-button shape="circle" type="success" pain>circle</sa-button>
+        </div>
+        <p>size:</p>
+        <div class="row-container">
+          <sa-button size="mini" pain>mini</sa-button>
+          <sa-button size="small" pain>small</sa-button>
+          <sa-button size="normal" pain>normal</sa-button>
+          <sa-button size="large" pain>large</sa-button>
+        </div>
       </div>
-      <p>pain:</p>
-      <div class="row-container">
-        <sa-button type="default" pain>default</sa-button>
-        <sa-button type="primary" pain>primary</sa-button>
-        <sa-button type="success" pain>success</sa-button>
-        <sa-button type="warning" pain>warning</sa-button>
-        <sa-button type="danger" pain>danger</sa-button>
-        <sa-button type="error" pain>error</sa-button>
-      </div>
-      <p>shape:</p>
-      <div class="row-container">
-        <sa-button shape="rect" type="default" pain>rect</sa-button>
-        <sa-button shape="round" type="primary" pain>round</sa-button>
-        <sa-button shape="circle" type="success" pain>circle</sa-button>
-      </div>
-      <p>size:</p>
-      <div class="row-container">
-        <sa-button size="mini" pain>mini</sa-button>
-        <sa-button size="small" pain>small</sa-button>
-        <sa-button size="normal" pain>normal</sa-button>
-        <sa-button size="large" pain>large</sa-button>
-      </div>
-      <div class="code" v-html="article[0].content"></div>
+      <sa-collapse :visible="collapse[0]">
+        <sa-button
+          :icon="collapse[0] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[0] = !collapse[0]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[0] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 796px; width: 900px"
+            v-html="article[0].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>2.基础用法: 添加icon</h2>
       <p>
         SaButton 支持通过icon属性来选择添加icon,通过iconPosition来选择icon的位置
       </p>
-      <div class="row-container">
+      <div class="row-container demo">
         <sa-button type="primary" icon="gamePs" icon-position="right">
           PlayStation-right
         </sa-button>
@@ -61,33 +81,69 @@
           PlayStation-top
         </sa-button>
       </div>
-      <div class="code" v-html="article[1].content"></div>
+      <sa-collapse :visible="collapse[1]">
+        <sa-button
+          :icon="collapse[1] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[1] = !collapse[1]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[1] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 289px; width: 900px"
+            v-html="article[1].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>3.组合用法: 去除圆角 disableRound</h2>
-      <p>
-        SaButton 支持通过icon属性来选择添加icon,通过iconPosition来选择icon的位置
-      </p>
-      <div style="display: flex; flex-direction: row">
-        <sa-button type="primary" disable-round="right">
-          disableRound-right
-        </sa-button>
+      <p>SaButton 支持通过 <mark>disable-round</mark> 去除某一方向的圆角</p>
+      <div class="demo">
+        <div style="display: flex; flex-direction: row">
+          <sa-button type="primary" disable-round="right">
+            disableRound-right
+          </sa-button>
+          <sa-input
+            disable-round="left"
+            placeholder="disable-round-left"
+            v-model="value[0]"
+          ></sa-input>
+        </div>
+        <br />
         <sa-input
-          disable-round="left"
-          placeholder="disable-round-left"
-          v-model="value[0]"
+          disable-round="bottom"
+          placeholder="disableRound-bottom"
+          v-model="value[1]"
         ></sa-input>
+        <sa-button type="primary" disable-round="top" style="width: 176px">
+          disableRound-top
+        </sa-button>
       </div>
-      <br />
-      <sa-input
-        disable-round="bottom"
-        placeholder="disableRound-bottom"
-        v-model="value[1]"
-      ></sa-input>
-      <sa-button type="primary" disable-round="top" style="width: 176px">
-        disableRound-top
-      </sa-button>
-      <div class="code" v-html="article[2].content"></div>
+      <sa-collapse :visible="collapse[2]">
+        <sa-button
+          :icon="collapse[2] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[2] = !collapse[2]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[2] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 480px; width: 900px"
+            v-html="article[2].content"
+          ></div>
+        </template>
+      </sa-collapse>
+    </section>
+    <section>
+      <h2>4.属性</h2>
+      <sa-table v-model="property"></sa-table>
     </section>
   </div>
 </template>
@@ -97,11 +153,13 @@ import { marked } from "marked";
 import SaButton from "@/components/button/button.vue";
 import SaInput from "@/components/input/input.vue";
 import SaTable from "@/components/table/table.vue";
+import SaCollapse from "@/components/collapse/collapse.vue";
 @Options({
   components: {
     SaButton,
     SaInput,
     SaTable,
+    SaCollapse,
   },
   computed: {
     compiledMarkdown(text: string) {
@@ -118,20 +176,36 @@ import SaTable from "@/components/table/table.vue";
   data() {
     return {
       value: ["", "", "", "", "", "", ""],
+      collapse: [false, false, false],
       property: [
         ["#id", "属性", "描述", "类型", "可选值", "默认值"],
-        [1, "type", "icon标识", "string", "去iconPark官网看", "-"],
-        [2, "size", "控icon大小", "string", "css长度单位", "inherit"],
-        [3, "reactive", "是否可交互元素", "boolean", "-", "false"],
-        [4, "filled", "是否为实心icon", "boolean", "-", "false"],
-        [5, "pain", "交互模式选项", "boolean", "-", "false"],
+        [
+          1,
+          "type",
+          "button主题颜色设定",
+          "string",
+          "primary,info……",
+          "default",
+        ],
+        [2, "pain", "按钮风格", "boolean", "-", "false"],
+        [3, "shape", "形状", "string", "rect ｜ round ｜ circle", "round"],
+        [4, "size", "大小控制", "string", "mini|small|normal|large", "mini"],
+        [5, "icon", "添加icon", "string", "见icon页", "null"],
         [
           6,
-          "color",
-          "icon颜色",
+          "icon-position",
+          "icon位置调整",
           "string",
-          "primary,info,warning,error,success",
-          "info",
+          "top ｜ bottom |left |right",
+          "right",
+        ],
+        [
+          7,
+          "disable-round",
+          "去除某一方向圆角",
+          "string",
+          "top|right|bottom|left",
+          "null",
         ],
       ],
       article: [

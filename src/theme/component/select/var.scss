@@ -1,0 +1,22 @@
+@use "../../base" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "sass:map";
+$select-width:()!default;
+$select-width:map.merge(
+    (
+        'small':80px,
+        'normal':120px,
+        'large':160px
+    ),
+    $select-width
+);
+@mixin select-size($size) {
+    height: map.get($common-component-height,$size);
+    min-width: map.get($select-width,$size);
+}
+@mixin select-common {
+    appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+}

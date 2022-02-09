@@ -4,8 +4,10 @@
     <router-link to="/test">test</router-link> |
     <router-link to="/input">input</router-link> |
     <router-link to="/table">table</router-link> |
-    <router-link to="/icon">icon</router-link> | 
-    <router-link to="/button">button</router-link>
+    <router-link to="/icon">icon</router-link> |
+    <router-link to="/button">button</router-link> |
+    <router-link to="/tooltip">tooltip</router-link> |
+    <router-link to="/collapse">collapse</router-link>
   </div>
   <router-view />
 </template>

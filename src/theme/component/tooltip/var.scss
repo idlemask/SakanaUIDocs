@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "sass:color";
+@use "../../common/config" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "../../base" as *;
+$arrow-size: 10px;
+$arrow-color:$bg-color;
+@mixin tooltip-common {
+    box-shadow: $box-shadow;
+}
+@mixin arrow($position) {
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    @if $position == bottom {
+        border-bottom: $arrow-size solid $arrow-color;
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
+    }
+    @else if $position == left {
+        border-top:$arrow-size solid transparent;
+        border-bottom: $arrow-size solid transparent;
+        border-left: $arrow-size solid $arrow-color;
+    }
+    @else if $position == top {
+        border-top:$arrow-size solid $arrow-color;
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
+    }
+    @else {
+        border-top:$arrow-size solid transparent;
+        border-bottom: $arrow-size solid transparent;
+        border-right: $arrow-size solid $arrow-color;
+    }
+}

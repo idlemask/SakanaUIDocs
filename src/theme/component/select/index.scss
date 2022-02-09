@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "sass:color";
+@use "./var" as *;
+@use "../../common/config" as *;
+@use "../../common/var" as *;
+@use "../../default" as *;
+@use "../../base" as *;
+$sizes: small, normal, large;
+@each $size in $sizes {
+    .#{$namespace}-select-#{$size}{
+        border: $border-base;
+        @include select-size($size);
+        @include select-common;
+        option {
+            @include select-size($size);
+        }
+    }
+}
+
+

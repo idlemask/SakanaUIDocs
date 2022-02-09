@@ -70,3 +70,17 @@ export function isLengthUnit(len: string): boolean {
 export function getActualLength(val: string): number {
   return val.replace(/[\u0391-\uFFE5]/g, "aa").length;
 }
+
+export function isCssLengthString(val: string): boolean {
+  return [
+    "initial",
+    "fit-content",
+    "max-content",
+    "min-content",
+    "inherit",
+    "auto",
+  ].includes(val);
+}
+export function isPosition(val: string): boolean {
+  return ["left", "top", "bottom", "right"].includes(val);
+}

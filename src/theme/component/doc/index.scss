@@ -1,14 +1,26 @@
 @use "../../default" as *;
+@use "../../common/var.scss" as *;
+@use "sass:map";
 .doc-container {
   width: 900px;
   padding: 20px;
+  .demo{
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: map.get($box-shadow,"base");
+    >p{
+      line-height: 30px;
+        margin-bottom: 20px;
+    }
+  }
   section {
     margin: 20px 0 120px;
       .code {
+        width: fit-content;
+        height: fit-content;
         > pre {
           color: #0e885f;
-          margin-top: 20px;
-          border-radius: 10px;
+          border-radius: 0 0 20px 20px;
           width: 860px;
           padding: 20px;
           background-color: #ebe6e6;
@@ -20,6 +32,15 @@
         flex-direction: row;
         align-items: center;
       }
+      >p {
+        line-height: 30px;
+        margin-bottom: 20px;
+        > span {
+          padding: 3px;
+          border-radius: 4px;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+        }
+      }
   }
   mark {
     padding: 0 5px;
@@ -28,14 +49,6 @@
   }
   h2 {
     margin-bottom: 10px;
-  }
-  p {
-    line-height: 30px;
-    > span {
-      padding: 3px;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    }
   }
   a {
     color: #0e885f;

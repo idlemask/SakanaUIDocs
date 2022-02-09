@@ -1,5 +1,5 @@
 <template>
-  <select class="sa-select">
+  <select class="sa-select-normal">
     <option class="sa-select-option" value="">1</option>
     <option value="">2</option>
   </select>
@@ -11,3 +11,6 @@ export default defineComponent({
 //   setup() {},
 });
 </script>
+<style lang="scss">
+@use "@/theme/component/select/index.scss" as *;
+</style>

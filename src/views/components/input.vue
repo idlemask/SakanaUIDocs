@@ -11,9 +11,26 @@
       <br />
       <p><strong>案例：</strong></p>
       <br />
-      <SaInput v-model="value[0]" placeholder="placeholder" />
-
-      <div class="code" v-html="article[0].content" />
+      <div class="demo">
+        <SaInput v-model="value[0]" placeholder="placeholder" />
+      </div>
+      <sa-collapse :visible="collapse[0]">
+        <sa-button
+          :icon="collapse[0] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[0] = !collapse[0]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[0] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 289px; width: 900px"
+            v-html="article[0].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>2.基础：添加 label</h2>
@@ -22,9 +39,26 @@
       <br />
       <p><strong>label案例：</strong></p>
       <br />
-      <SaInput label="用户名:" v-model="value[1]" placeholder="" />
-
-      <div class="code" v-html="article[1].content" />
+      <div class="demo">
+        <SaInput label="用户名:" v-model="value[1]" placeholder="" />
+      </div>
+      <sa-collapse :visible="collapse[1]">
+        <sa-button
+          :icon="collapse[1] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[1] = !collapse[1]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[1] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 289px; width: 900px"
+            v-html="article[1].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>3.基础：添加 icon</h2>
@@ -38,15 +72,31 @@
       <br /><br />
       <p><strong>icon 案例：</strong></p>
       <br />
-      <SaInput
-        label="用户名:"
-        v-model="value[3]"
-        icon="user"
-        icon-size="24px"
-      />
-
-      <div class="code" v-html="article[2].content" />
-
+      <div class="demo">
+        <SaInput
+          label="用户名:"
+          v-model="value[3]"
+          icon="user"
+          icon-size="24px"
+        />
+      </div>
+      <sa-collapse :visible="collapse[2]">
+        <sa-button
+          :icon="collapse[2] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[2] = !collapse[2]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[2] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 378px; width: 900px"
+            v-html="article[2].content"
+          ></div>
+        </template>
+      </sa-collapse>
       <br />
       <p>
         还可以更改 <mark>iconColor</mark> 属性,修改icon 颜色,可选值有
@@ -60,15 +110,32 @@
       <br /><br />
       <p><strong>icon iconColor案例：</strong></p>
       <br />
-      <SaInput
-        label="用户名:"
-        v-model="value[3]"
-        icon="user"
-        iconColor="primary"
-        icon-size="24px"
-      />
-
-      <div class="code" v-html="article[3].content" />
+      <div class="demo">
+        <SaInput
+          label="用户名:"
+          v-model="value[3]"
+          icon="user"
+          iconColor="primary"
+          icon-size="24px"
+        />
+      </div>
+      <sa-collapse :visible="collapse[3]">
+        <sa-button
+          :icon="collapse[3] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[3] = !collapse[3]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[3] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 396px; width: 900px"
+            v-html="article[3].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>4.基础：长度限制 max</h2>
@@ -76,9 +143,26 @@
       <br /><br />
       <p><strong>icon 案例：</strong></p>
       <p class="text-info" style="font-size: 12px">//长度限制为5</p>
-      <SaInput v-model="value[4]" :max="5" />
-
-      <div class="code" v-html="article[4].content" />
+      <div class="demo">
+        <SaInput v-model="value[4]" :max="5" />
+      </div>
+      <sa-collapse :visible="collapse[4]">
+        <sa-button
+          :icon="collapse[4] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[4] = !collapse[4]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[4] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 342px; width: 900px"
+            v-html="article[4].content"
+          ></div>
+        </template>
+      </sa-collapse>
 
       <br />
     </section>
@@ -92,15 +176,32 @@
       <br /><br />
       <p><strong>icon 案例：</strong></p>
       <br />
-      <SaInput
-        ref="username"
-        label="用户名:"
-        v-model="value[5]"
-        icon="user"
-        icon-size="24px"
-      />
-
-      <div class="code" v-html="article[5].content" />
+      <div class="demo">
+        <SaInput
+          ref="username"
+          label="用户名:"
+          v-model="value[5]"
+          icon="user"
+          icon-size="24px"
+        />
+      </div>
+      <sa-collapse :visible="collapse[5]">
+        <sa-button
+          :icon="collapse[5] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[5] = !collapse[5]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[5] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 396px; width: 900px"
+            v-html="article[5].content"
+          ></div>
+        </template>
+      </sa-collapse>
 
       <br />
     </section>
@@ -124,12 +225,16 @@ import { marked } from "marked";
 import SaTable from "@/components/table/table.vue";
 import { IconPark } from "@icon-park/vue-next/es/all";
 import SaInput from "@/components/input/input.vue";
+import SaCollapse from "@/components/collapse/collapse.vue";
+import SaButton from "@/components/button/button.vue";
 
 @Options({
   components: {
     SaInput,
     SaTable,
     IconPark,
+    SaButton,
+    SaCollapse,
   },
   computed: {
     compiledMarkdown(text: string) {
@@ -145,6 +250,7 @@ import SaInput from "@/components/input/input.vue";
   },
   data() {
     return {
+      collapse: [false, false, false, false],
       value: ["", "SakanaCatcher", "", "", "", "", ""],
       property: [
         ["#id", "属性", "描述", "类型", "可选值", "默认值"],

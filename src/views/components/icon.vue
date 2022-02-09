@@ -16,20 +16,55 @@
       </p>
       <p>*注：名称形如 game-ps 要转换为逆驼峰命名 gamePs</p>
       <p>案例:</p>
-      <icon-park type="gamePs"></icon-park>
-      <icon-park type="gamePs" filled></icon-park>
-      <div class="code" v-html="article[0].content" />
+      <div class="demo">
+        <icon-park type="gamePs"></icon-park>
+        <icon-park type="gamePs" filled></icon-park>
+      </div>
+
+      <sa-collapse :visible="collapse[0]">
+        <sa-button
+          :icon="collapse[0] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[0] = !collapse[0]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[0] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 218px; width: 900px"
+            v-html="article[0].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>2.基础用法: 改变大小</h2>
       <p>
         有些时候为了突出icon，icon的大小与行内字体大小并不相等，这时可以通过size属性单独修改icon大小
       </p>
-      <icon-park type="gamePs" size="30px" />
-      <div class="code" v-html="article[1].content" />
+      <div class="demo"><icon-park type="gamePs" size="30px" /></div>
+      <sa-collapse :visible="collapse[1]">
+        <sa-button
+          :icon="collapse[1] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[1] = !collapse[1]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[1] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 200px; width: 900px"
+            v-html="article[1].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
-      <h2>2.基础用法: 改变颜色</h2>
+      <h2>3.基础用法: 改变颜色</h2>
       <p>
         icon的颜色需要与它的功能相匹配，可以通过修改color属性来改变颜色属性,修改icon
         颜色,可选值有
@@ -40,10 +75,28 @@
         <span class="text-warning">warning</span>,
         其他颜色可以通过设置style的color来修改
       </p>
-      <icon-park type="gamePs" color="primary" />
-      <br />
-      <icon-park type="gamePs" style="color: aqua" />
-      <div class="code" v-html="article[2].content" />
+      <div class="demo">
+        <icon-park type="gamePs" color="primary" size="50px" />
+        <br />
+        <icon-park type="gamePs" style="color: aqua" size="50px" />
+      </div>
+      <sa-collapse :visible="collapse[2]">
+        <sa-button
+          :icon="collapse[2] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[2] = !collapse[2]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[2] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 219px; width: 900px"
+            v-html="article[2].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>3.基础用法: 可交互</h2>
@@ -64,7 +117,23 @@
       <br />
       <icon-park type="like" color="error" reactive size="50px" filled />
       <icon-park type="like" color="error" reactive pain size="50px" />
-      <div class="code" v-html="article[2].content" />
+      <sa-collapse :visible="collapse[3]">
+        <sa-button
+          :icon="collapse[3] ? 'doubleUp' : 'doubleDown'"
+          @click="collapse[3] = !collapse[3]"
+          icon-position="bottom"
+          disable-round="top"
+          type="primary"
+          >{{ collapse[3] ? "折叠" : "点击查看代码" }}</sa-button
+        >
+        <template v-slot:content>
+          <div
+            class="code"
+            style="height: 254px; width: 900px"
+            v-html="article[3].content"
+          ></div>
+        </template>
+      </sa-collapse>
     </section>
     <section>
       <h2>4.属性</h2>
@@ -77,10 +146,14 @@ import { Options, Vue } from "vue-class-component";
 import { marked } from "marked";
 import IconPark from "@/components/icon/iconPark.vue";
 import SaTable from "@/components/table/table.vue";
+import SaButton from "@/components/button/button.vue";
+import SaCollapse from "@/components/collapse/collapse.vue";
 @Options({
   components: {
     IconPark,
     SaTable,
+    SaButton,
+    SaCollapse,
   },
   computed: {
     compiledMarkdown(text: string) {
@@ -96,6 +169,7 @@ import SaTable from "@/components/table/table.vue";
   },
   data() {
     return {
+      collapse: [false, false, false],
       value: ["", "SakanaCatcher", "", "", "", "", ""],
       property: [
         ["#id", "属性", "描述", "类型", "可选值", "默认值"],
@@ -134,6 +208,21 @@ import SaTable from "@/components/table/table.vue";
             "```vue\n" +
             "<template>\n" +
             '  <icon-park type="giftBox" size="30px"/>\n' +
+            "</template>\n" +
+            "script:\n" +
+            "@Options({\n" +
+            "  components: {\n" +
+            "    IconPark,\n" +
+            "  },\n" +
+            "})\n" +
+            "```\n",
+        },
+        {
+          content:
+            "```vue\n" +
+            "<template>\n" +
+            '  <icon-park type="giftBox" color="primary" size="50px"/>\n' +
+            '  <icon-park type="gamePs" style="color: aqua" size="50px"/>\n' +
             "</template>\n" +
             "script:\n" +
             "@Options({\n" +
