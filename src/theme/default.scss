@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "sass:color";
 @use "sass:math";
-@use "base.scss";
+@use "base.scss" as *;
 @use "./common/var.scss" as *;
 @use "./common/config.scss" as *;
 

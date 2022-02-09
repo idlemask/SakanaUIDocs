@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/test">test</router-link> |
+    <!-- <router-link to="/test">test</router-link> | -->
     <router-link to="/input">input</router-link> |
     <router-link to="/table">table</router-link> |
     <router-link to="/icon">icon</router-link> |
@@ -18,7 +18,7 @@
 
 #nav {
   padding: 30px;
-
+  font-family: "Monaco";
   a {
     font-weight: bold;
     color: #2c3e50;
