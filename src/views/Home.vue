@@ -30,7 +30,7 @@
       <p>
         由于笔者技术有限，现还未能通过 npm install 安装；<br>
         如要使用:<br>
-        需要将项目克隆，然后复制 `src/components` 以及 `src/theme`
+        需要将<a class="text-primary" href="https://gitee.com/SakanaCatcher/sakana-ui">项目</a>克隆，然后复制 `src/components` 以及 `src/theme`
         到你的项目上,即可引用
       </p>
     </section>
@@ -70,6 +70,17 @@ export default class Home extends Vue {}
   p {
     font-size: 20px;
     line-height: 30px;
+  }
+  a {
+    &:hover{
+      filter:brightness(90%);
+    }
+    &:active {
+      filter:brightness(80%);
+    }
+    &:visited {
+      filter:brightness(70%);
+    }
   }
 }
 </style>
